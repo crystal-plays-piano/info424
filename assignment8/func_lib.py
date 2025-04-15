@@ -1,0 +1,46 @@
+
+import random
+
+# - pdfchk takes a die-roll, checks it against a list of probabilities, returns the index of the list that matches
+# - pdfchk is an implementation of a weighted discrete random variable: the list is the probability distribution
+# - intent: call pdfchk with num_inpt a random() call and list_inpt the desired weigted variable
+def chkpdf (num_inpt: int, list_inpt: list):
+	prob = num_inpt
+	pdf = list_inpt
+
+	for index in range(len(pdf) + 1 ):
+		if prob < sum (pdf[0:index]):
+			return index-1
+
+def mkpdf (size_inpt: int):
+	size = size_inpt
+	pdf_no_norm = [random.random() for i in range(size)]
+	norm_factor = sum(pdf_no_norm)
+	pdf_norm = [ (item  / norm_factor) for item in pdf_no_norm ]
+	return pdf_norm
+
+def mkmatrix (size_inpt: int):
+	size = size_inpt
+	matrix = []
+	for i in range(size):
+		matrix.append(mkpdf(size))
+	return matrix
+
+
+
+def mkvchn (size_inpt: int, matrix_inpt: list):
+	size = size_inpt
+	matrix = matrix_inpt
+	chain = []
+	initial_index = random.randint(0, len(matrix[0])-1)
+	chain.append(initial_index)
+	for iter in range(size):
+		randx = random.random()
+		chain.append( chkpdf(randx, matrix[chain[iter]] )  )
+	return chain
+
+
+def lyprint (lines_inpt: list):
+	lines = lines_inpt
+	lylines = ['    ' + line + '\n' for line in lines ]
+	return lylines
