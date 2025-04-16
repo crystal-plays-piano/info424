@@ -1,0 +1,10 @@
+@image{bd/lily-00070e1a-1}
+@image{bd/lily-00070e1a-2}
+@image{bd/lily-00070e1a-3}
+@image{bd/lily-00070e1a-4}
+@image{bd/lily-00070e1a-5}
+@image{bd/lily-00070e1a-6}
+@image{bd/lily-00070e1a-7}
+@image{bd/lily-00070e1a-8}
+@image{bd/lily-00070e1a-9}
+@c eof

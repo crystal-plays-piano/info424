@@ -1,0 +1,4 @@
+@image{df/lily-07b56861-1}
+@image{df/lily-07b56861-2}
+@image{df/lily-07b56861-3}
+@c eof
