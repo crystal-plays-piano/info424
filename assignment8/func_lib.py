@@ -16,7 +16,10 @@ def mkpdf (size_inpt: int):
 	size = size_inpt
 	pdf_no_norm = [random.random() for i in range(size)]
 	norm_factor = sum(pdf_no_norm)
-	pdf_norm = [ (item  / norm_factor) for item in pdf_no_norm ]
+	pdf_norm_frac = [ (item  / norm_factor) for item in pdf_no_norm ]
+	pdf_norm = [ round(item, 2) for item in pdf_norm_frac ]
+	offset = round(1 - sum(pdf_norm), 2)
+	pdf_norm[-1] +=  offset
 	return pdf_norm
 
 def mkmatrix (size_inpt: int):
