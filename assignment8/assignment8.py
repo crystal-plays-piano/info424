@@ -67,22 +67,27 @@ version = '''
 \\version \"2.24.4\" \n
 '''
 
+staffgroup = '''
+\\new ChoirStaff <<
+
+'''
 staff = '''
 
 \\new Staff <<
-  \\new Voice \\with { \n
-  \\remove Note_heads_engraver \n
-  \\consists Completion_heads_engraver \n
-  \\remove Rest_engraver \n
-  \\consists Completion_rest_engraver \n
-  } \n
-  \\clef alto \n
-  \\time 4/4 \n
+  \\new Voice \\with {
+  \\remove Note_heads_engraver
+  \\consists Completion_heads_engraver
+  \\remove Rest_engraver
+  \\consists Completion_rest_engraver
+  }
+  {
+  \\clef alto
+  \\time 4/4
   {
 '''
 
 
-# - OPEN ASS8-FLAT-RANDOM.LY AND WRITE PREAMBLE AND RANDOM_40
+# - OPEN ASS8-FLAT-RANDOM.LY AND WRITE
 
 ass8_flat_random_printfile = open('ass8-flat-random.ly', 'w')
 
@@ -90,12 +95,18 @@ ass8_flat_random_printfile = open('ass8-flat-random.ly', 'w')
 
 ass8_flat_random_printfile.write(version)
 
+ass8_flat_random_printfile.write(staffgroup)
+
+# - STAVES + VOICES
+
 for i in range(num_voices):
 	ass8_flat_random_printfile.write(staff)
 	ass8_flat_random_printfile.writelines(func_lib.lyprint(voices[i]))
-	ass8_flat_random_printfile.write('}\n>>')
+	ass8_flat_random_printfile.write('}\n}\n>>\n')
 
 # - CLOSES STAFFGROUP
+
+ass8_flat_random_printfile.write('>>')
 
 # - CLOSES FILE
 
@@ -103,23 +114,24 @@ ass8_flat_random_printfile.close()
 
 
 
-# - OPEN ASS8-MARKOV-BANK.LY AND WRITE PREAMBLE
+# - OPEN ASS8-MARKOV-BANK.LY AND WRITE
 
 ass8_markov_bank_printfile = open('ass8-markov-bank.ly', 'w')
 
-ass8_markov_bank_printfile.write(staff)
+ass8_markov_bank_printfile.write(version)
 
-#ass8_markov_bank_printfile.writelines(func_lib.lyprint(mkv_bank))
+ass8_markov_bank_printfile.write(staffgroup)
 
-# print (func_lib.lyprint(mkv_bank))
+# - STAVES + VOICES
 
-ass8_markov_bank_printfile.write('}\n')
+for i in range(num_voices):
+	ass8_markov_bank_printfile.write(staff)
+	ass8_markov_bank_printfile.writelines(func_lib.lyprint(mkv_bank[i]))
+	ass8_markov_bank_printfile.write('}\n}\n>>\n')
 
-# - CLOSES STAFF AND SCORE ENVIRONMENTS
+# - CLOSES STAFFGROUP
 
-ass8_markov_bank_printfile.write('}\n')
-
-ass8_markov_bank_printfile.write('}\n')
+ass8_markov_bank_printfile.write('>>')
 
 # - CLOSES FILE
 
@@ -128,25 +140,27 @@ ass8_markov_bank_printfile.close()
 
 
 
-# - OPEN ASS8-MARKOV-CHAIN.LY AND WRITE PREAMBLE
+# - OPEN ASS8-MARKOV-CHAIN.LY AND WRITE
 
 ass8_markov_chain_printfile = open('ass8-markov-chain.ly', 'w')
 
-ass8_markov_chain_printfile.write(staff)
+ass8_markov_chain_printfile.write(version)
 
-#lyprint_mkv_bank = [ mkv_bank[i] + '-\"' + str(i) + '\"' for i in range(mkv_size) ]
+lyprint_mkv_chain = [ [mkv_chain_render[i][j] + '-\"' + str(mkv_chain[j]) + '\"' for j in range(chain_len)] for i in range(num_voices) ]
 
-#ass8_markov_chain_printfile.writelines(func_lib.lyprint(lyprint_mkv_bank))
+ass8_markov_chain_printfile.writelines(staffgroup)
 
-# print (func_lib.lyprint(lyprint_mkv_bank))
+# - STAVES + VOICES
 
-ass8_markov_chain_printfile.write('}\n')
+for i in range(num_voices):
+	ass8_markov_chain_printfile.write(staff)
+	ass8_markov_chain_printfile.writelines(func_lib.lyprint(lyprint_mkv_chain[i]))
+	ass8_markov_chain_printfile.write('}\n}\n>>\n')
 
-# - CLOSES STAFF AND SCORE ENVIRONMENTS
+# - CLOSES STAFFGROUP
 
-ass8_markov_chain_printfile.write('}\n')
+ass8_markov_chain_printfile.write('>>')
 
-ass8_markov_chain_printfile.write('}\n')
 
 # - CLOSES FILE
 
