@@ -34,7 +34,7 @@ def mkvchn (size_inpt: int, matrix_inpt: list):
 	chain = []
 	initial_index = random.randint(0, len(matrix[0])-1)
 	chain.append(initial_index)
-	for iter in range(size):
+	for iter in range(size-1):
 		randx = random.random()
 		chain.append( chkpdf(randx, matrix[chain[iter]] )  )
 	return chain

@@ -1,3 +1,4 @@
+
 # ------------------------------
 # GLOBAL VARIABLES
 # ------------------------------
@@ -8,9 +9,10 @@ mkv_size = 7
 
 chain_len = 20
 
+num_voices = 3
 
 # ----------------------------------
-# PYTHON CODE
+# CUSTOM BANKS AND FUNCTIONS
 # ----------------------------------
 
 import func_lib
@@ -22,57 +24,61 @@ pit_bank = [ 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'c\'', 'd\'', 'e\'', 'f\'', 'g\'
 
 dyn_bank = ['pp' , 'p' , 'mp'  , 'mf' , 'f' , 'ff' ]
 
+def makeflatvoice():
+
+	tmp_dur_len = [ random.choice(dur_bank) for i in range(flat_size)  ]
+
+	tmp_pit_len = [ random.choice(pit_bank) for i in range(flat_size) ]
+
+	tmp_dyn_toggle = random.sample( range(flat_size), 8 )
+
+	tmp_dyn_len = [ '\\' + random.choice(dyn_bank) if i in tmp_dyn_toggle else '' for i in range(flat_size) ]
+
+	output_len = [ tmp_pit_len[i] + str(tmp_dur_len[i]) + tmp_dyn_len[i] for i in range(flat_size) ]
+
+	return output_len
 
 
 # -----------------------------------
 # - FLAT RANDOM CHOICE SECTION
 # -----------------------------------
 
-dur_len = [ random.choice(dur_bank) for i in range(flat_size)  ]
-
-pit_len = [ random.choice(pit_bank) for i in range(flat_size) ]
-
-dyn_toggle = random.sample( range(flat_size), 8 )
-
-dyn_len = [ random.choice(dyn_bank) if i in dyn_toggle else '' for i in range(flat_size) ]
-
-random_len = [ pit_len[i] + str(dur_len[i]) + dyn_len[i] for i in range(flat_size) ]
+voices = [ makeflatvoice() for i in range(num_voices) ]
 
 # -------------------------------
 # - MARKOV SECTION
 # -------------------------------
 
-mkv_bank = random_len[0:mkv_size]
+mkv_bank = [ voices[i][0:mkv_size] for i in range(num_voices) ]
 
-mkv_matrix = func_lib.mkmatrix(len(mkv_bank))
+mkv_matrix = func_lib.mkmatrix(mkv_size)
 
 # - chain
 
 mkv_chain = func_lib.mkvchn(chain_len, mkv_matrix)
 
-mkv_chain_render = [ mkv_bank[mkv_chain[item]] for item in mkv_chain ]
-
+mkv_chain_render = [ [mkv_bank[i][mkv_chain[item]] for item in mkv_chain ]for i in range(num_voices) ]
 
 # ---------------------------------------
 # - WRITING LILYPOND FILE
 # ---------------------------------------
 
-preamble = '''
-
+version = '''
 \\version \"2.24.4\" \n
+'''
 
-\\score{
-  \\new Staff{
-    \\new Voice \\with { \n
-    \\remove Note_heads_engraver \n
-    \\consists Completion_heads_engraver \n
-    \\remove Rest_engraver \n
-    \\consists Completion_rest_engraver \n
-    } \n
-    \n
-    \\clef alto \n
-    \\time 4/4 \n
+staff = '''
 
+\\new Staff <<
+  \\new Voice \\with { \n
+  \\remove Note_heads_engraver \n
+  \\consists Completion_heads_engraver \n
+  \\remove Rest_engraver \n
+  \\consists Completion_rest_engraver \n
+  } \n
+  \\clef alto \n
+  \\time 4/4 \n
+  {
 '''
 
 
@@ -80,17 +86,16 @@ preamble = '''
 
 ass8_flat_random_printfile = open('ass8-flat-random.ly', 'w')
 
-ass8_flat_random_printfile.write(preamble)
+# - STAFF GROUP
 
-ass8_flat_random_printfile.writelines(func_lib.lyprint(random_len))
+ass8_flat_random_printfile.write(version)
 
+for i in range(num_voices):
+	ass8_flat_random_printfile.write(staff)
+	ass8_flat_random_printfile.writelines(func_lib.lyprint(voices[i]))
+	ass8_flat_random_printfile.write('}\n>>')
 
-
-# - CLOSES STAFF AND SCORE ENVIRONMENTS
-
-ass8_flat_random_printfile.write('}\n')
-
-ass8_flat_random_printfile.write('}\n')
+# - CLOSES STAFFGROUP
 
 # - CLOSES FILE
 
@@ -102,9 +107,9 @@ ass8_flat_random_printfile.close()
 
 ass8_markov_bank_printfile = open('ass8-markov-bank.ly', 'w')
 
-ass8_markov_bank_printfile.write(preamble)
+ass8_markov_bank_printfile.write(staff)
 
-ass8_markov_bank_printfile.writelines(func_lib.lyprint(mkv_bank))
+#ass8_markov_bank_printfile.writelines(func_lib.lyprint(mkv_bank))
 
 # print (func_lib.lyprint(mkv_bank))
 
@@ -123,15 +128,15 @@ ass8_markov_bank_printfile.close()
 
 
 
-# - OPEN ASS8-MARKOV-BANK.LY AND WRITE PREAMBLE
+# - OPEN ASS8-MARKOV-CHAIN.LY AND WRITE PREAMBLE
 
 ass8_markov_chain_printfile = open('ass8-markov-chain.ly', 'w')
 
-ass8_markov_chain_printfile.write(preamble)
+ass8_markov_chain_printfile.write(staff)
 
-lyprint_mkv_bank = [ mkv_bank[i] + '-\"' + str(i) + '\"' for i in range(mkv_size) ]
+#lyprint_mkv_bank = [ mkv_bank[i] + '-\"' + str(i) + '\"' for i in range(mkv_size) ]
 
-ass8_markov_chain_printfile.writelines(func_lib.lyprint(lyprint_mkv_bank))
+#ass8_markov_chain_printfile.writelines(func_lib.lyprint(lyprint_mkv_bank))
 
 # print (func_lib.lyprint(lyprint_mkv_bank))
 
