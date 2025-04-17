@@ -1,7 +1,8 @@
 
 import random
+import math
 
-# - pdfchk takes a die-roll, checks it against a list of probabilities, returns the index of the list that matches
+# - chkpdf takes a die-roll, checks it against a list of probabilities, returns the index of the list that matches
 # - pdfchk is an implementation of a weighted discrete random variable: the list is the probability distribution
 # - intent: call pdfchk with num_inpt a random() call and list_inpt the desired weigted variable
 def chkpdf (num_inpt: int, list_inpt: list):
@@ -17,7 +18,7 @@ def mkpdf (size_inpt: int):
 	pdf_no_norm = [random.random() for i in range(size)]
 	norm_factor = sum(pdf_no_norm)
 	pdf_norm_frac = [ (item  / norm_factor) for item in pdf_no_norm ]
-	pdf_norm = [ round(item, 2) for item in pdf_norm_frac ]
+	pdf_norm = [  math.floor(item*100) / 100   for item in pdf_norm_frac ]
 	offset = round(1 - sum(pdf_norm), 2)
 	pdf_norm[-1] = round(pdf_norm[-1] + offset, 2)
 	return pdf_norm

@@ -1,18 +1,38 @@
+# ------------------------------
+# - ARGUMENTS FROM COMMAND LINE
+# ------------------------------
+
+import argparse
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Script that adds 3 numbers from CMD"
+    )
+    parser.add_argument("--flatsize", type=int, default=40)
+    parser.add_argument("--numvoices", type=int, default=3)
+    parser.add_argument("--mkvsize", type=int, default=7)
+    parser.add_argument("--chainlen", type=int, default=20)
+    args = parser.parse_args()
+
+flat_size = args.flatsize
+num_voices = args.numvoices
+mkv_size = args.mkvsize
+chain_len = args.chainlen
 
 # ------------------------------
-# GLOBAL VARIABLES
+# - GLOBAL VARIABLES
 # ------------------------------
-
+'''
 flat_size = 40
+
+num_voices = 3
 
 mkv_size = 7
 
 chain_len = 20
-
-num_voices = 3
-
+'''
 # ----------------------------------
-# CUSTOM BANKS AND FUNCTIONS
+# - CUSTOM BANKS AND FUNCTIONS
 # ----------------------------------
 
 import func_lib
@@ -179,10 +199,10 @@ ass8_markov_table_printfile = open('ass8-markov-table.csv','w')
 
 matrix_print = []
 
-matrix_print.append(','.join([str(i + 1) for i in range(7)]) + '\n')
+matrix_print.append('x,' + ','.join(([str(i + 1) for i in range(mkv_size)]) ) + '\n')
 
 for i in range(mkv_size):
-	matrix_print.append(','.join([ str(mkv_matrix[i][j]) for j in range(mkv_size) ] ) + '\n' )
+	matrix_print.append( str(i+1) + ','  +  ','.join([ str(mkv_matrix[i][j]) for j in range(mkv_size)]) + '\n' )
 
 ass8_markov_table_printfile.writelines(matrix_print)
 
