@@ -1,38 +1,33 @@
 #!/bin/bash
 
-foo()
-{
-    local OPTIND o a
-    while getopts ":a:" o; do
-        case "${o}" in
-            length)
-                length="${OPTARG}"
+    while getopts ":l:s:v:c:" opt; do
+        case "$opt" in
+            l)
+                LENGTH="${OPTARG}"
                 ;;
-            voices)
-                voices="${OPTARG}"
+            v)
+                VOICES="${OPTARG}"
                 ;;
-            size)
-                size="${OPTARG}"
+            s)
+                SIZE="${OPTARG}"
 		;;
-	    chain)
-		chain={"$OPTARG"}
+	    c)
+		CHAIN="${OPTARG}"
 	esac
     done
+
     shift $((OPTIND-1))
 
-    pushdir python
-    python assignment8.py --flatsize ${length:-40} --numvoices ${voices:-3} --mkvsize ${size:-7} --chain ${chain:-20}
-    popdir
+    pushd python
+    python assignment8.py --flatsize ${LENGTH:-40}  --numvoices ${VOICES:-3} --mkvsize ${SIZE:-7} --chain ${CHAIN:-20}
+    popd
 
-    pushdir latex
+    pushd latex
     lilypond-book --format=latex assignment8.tex --output lilyrender
-    popdir latex
+    popd
 
-    pushdir latex/lilyrender
+    pushd latex/lilyrender
     pdflatex assignment8.tex
-    popdir
+    popd
 
     cp latex/lilyrender/assignment8.pdf assignment8.pdf
-
-}
-

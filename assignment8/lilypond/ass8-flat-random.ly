@@ -17,158 +17,158 @@
   \clef alto
   \time 4/4
   {
-    a'8
-    d4
-    f'16\mf
-    a'1
     g16
-    g2
-    f2
     f'2
-    c'16
-    c'4
-    a8\mp
-    f1
-    e1\f
-    c'16
-    f'2\mf
-    g4\ff
-    a'16
-    e'2
-    c2
-    b2
-    g'4
-    b'4
-    d1
-    b'2\ff
-    d1
-    b2
-    f'1
-    f16
-    c'1\f
-    f'1
-    g1
-    a4
-    f8
-    a16
-    d4
-    b16
-    c'1
-    d4
     c8
-    d'8\mf
-}
-}
->>
-
-
-\new Staff <<
-  \new Voice \with {
-  \remove Note_heads_engraver
-  \consists Completion_heads_engraver
-  \remove Rest_engraver
-  \consists Completion_rest_engraver
-  }
-  {
-  \clef alto
-  \time 4/4
-  {
-    d16
-    c2
-    g1
-    c'8\mf
-    g'16
-    e1
-    e1
-    f'2\p
-    f8
-    e1
-    f'1
-    e8
-    f'2
-    f'4
-    d'16\p
-    e1
-    c'4
-    e4
-    g'16
-    a2
-    c'8
-    a'8
-    b'2
-    d4
-    c'2
-    e4
-    d'16\p
-    b2
-    c2\pp
-    c4
-    e'8
-    b'1
-    g2\pp
-    b'16
-    e'2\pp
-    c'2
-    g'16
-    d8
-    g2\p
-    e'2
-}
-}
->>
-
-
-\new Staff <<
-  \new Voice \with {
-  \remove Note_heads_engraver
-  \consists Completion_heads_engraver
-  \remove Rest_engraver
-  \consists Completion_rest_engraver
-  }
-  {
-  \clef alto
-  \time 4/4
-  {
-    f2
-    a16
-    e'4\p
-    c1
-    c'8
-    b'2\f
-    a'1\p
-    e'1
-    f2
-    g'8
-    g1
-    c'16
-    c'4
-    f'2
-    f'1
-    e2
-    b2\f
-    a1
-    a'1
-    f16
-    c'2\mf
-    c'16
-    d'2
-    g8
-    d'1
+    g4\mp
+    f'16
+    g'1
     c'1
+    a'2
+    c'2
+    b16
+    e'4
+    a'1\pp
+    c'4
+    g'8
+    b1
+    c2
+    f8
+    e2\ff
+    e1
+    d8\f
+    b'8
+    d16
     g16
-    c4\p
+    g16
+    b'4
+    e'1
+    b8
+    c'16
+    f'2\mp
+    a'16
+    e8
+    a1\mf
+    a'4\p
+    a1\f
+    b4
+    a16
+    f1
+    e4
+    g1
+    e'1
+}
+}
+>>
+
+
+\new Staff <<
+  \new Voice \with {
+  \remove Note_heads_engraver
+  \consists Completion_heads_engraver
+  \remove Rest_engraver
+  \consists Completion_rest_engraver
+  }
+  {
+  \clef alto
+  \time 4/4
+  {
+    a'2
     c4
-    e2
-    e'16
-    e'8
-    b2
-    d2
+    e'1
+    g'1
+    c'1\mp
+    g1
+    b8
+    c1
+    b'2
+    f4
+    c'8
+    d16
+    b4
+    a8
+    c'8
+    f'16
+    c'4\p
+    g'8
+    c'4\pp
     f'2
-    g8
-    g'2
-    c'4\mp
-    c16\pp
-    g8
+    d'1\mf
+    b'4
+    f16
+    a8\pp
+    g16\f
+    f'1\mf
+    d'2
+    b'1
+    f'1
+    b'16
+    d4\p
+    c16
+    d'4
+    e4
+    b'2
+    f4
+    a'2
+    g2
+    b'8
+    e'1
+}
+}
+>>
+
+
+\new Staff <<
+  \new Voice \with {
+  \remove Note_heads_engraver
+  \consists Completion_heads_engraver
+  \remove Rest_engraver
+  \consists Completion_rest_engraver
+  }
+  {
+  \clef alto
+  \time 4/4
+  {
+    a'8
+    e'16
+    c'16
+    b'4\mf
+    e8
+    d'2
+    f'1\ff
+    f'1
+    f1
+    g2
+    d'2
+    e'8
+    f'1
+    e'1
+    c'16\f
+    d'16\f
+    e4
+    e16
+    g'8
+    g2
+    a'1
+    a'8\mp
+    f'1
+    b1\pp
+    e1\p
+    b4
+    c'16
+    b'8
+    d4
+    a'1
+    b'8
+    e'4
+    b'4
+    e16
+    c1
+    c'16
+    f2
+    a2
+    d4
+    a1\f
 }
 }
 >>

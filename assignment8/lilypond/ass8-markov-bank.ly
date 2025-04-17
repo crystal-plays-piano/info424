@@ -17,59 +17,59 @@
   \clef alto
   \time 4/4
   {
+    g16-"1"
+    f'2-"2"
+    c8-"3"
+    g4\mp-"4"
+    f'16-"5"
+    g'1-"6"
+    c'1-"7"
+}
+}
+>>
+
+
+\new Staff <<
+  \new Voice \with {
+  \remove Note_heads_engraver
+  \consists Completion_heads_engraver
+  \remove Rest_engraver
+  \consists Completion_rest_engraver
+  }
+  {
+  \clef alto
+  \time 4/4
+  {
+    a'2-"1"
+    c4-"2"
+    e'1-"3"
+    g'1-"4"
+    c'1\mp-"5"
+    g1-"6"
+    b8-"7"
+}
+}
+>>
+
+
+\new Staff <<
+  \new Voice \with {
+  \remove Note_heads_engraver
+  \consists Completion_heads_engraver
+  \remove Rest_engraver
+  \consists Completion_rest_engraver
+  }
+  {
+  \clef alto
+  \time 4/4
+  {
     a'8-"1"
-    d4-"2"
-    f'16\mf-"3"
-    a'1-"4"
-    g16-"5"
-    g2-"6"
-    f2-"7"
-}
-}
->>
-
-
-\new Staff <<
-  \new Voice \with {
-  \remove Note_heads_engraver
-  \consists Completion_heads_engraver
-  \remove Rest_engraver
-  \consists Completion_rest_engraver
-  }
-  {
-  \clef alto
-  \time 4/4
-  {
-    d16-"1"
-    c2-"2"
-    g1-"3"
-    c'8\mf-"4"
-    g'16-"5"
-    e1-"6"
-    e1-"7"
-}
-}
->>
-
-
-\new Staff <<
-  \new Voice \with {
-  \remove Note_heads_engraver
-  \consists Completion_heads_engraver
-  \remove Rest_engraver
-  \consists Completion_rest_engraver
-  }
-  {
-  \clef alto
-  \time 4/4
-  {
-    f2-"1"
-    a16-"2"
-    e'4\p-"3"
-    c1-"4"
-    c'8-"5"
-    b'2\f-"6"
-    a'1\p-"7"
+    e'16-"2"
+    c'16-"3"
+    b'4\mf-"4"
+    e8-"5"
+    d'2-"6"
+    f'1\ff-"7"
 }
 }
 >>
