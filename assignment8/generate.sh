@@ -41,7 +41,7 @@ EOF
 		exit 1
 		;;
             \?)
-		echo "Invalid option: --$OPTARG, see ./assignment.sh --help for usage documentation"
+		echo "Invalid option: -$OPTARG, see ./assignment.sh -h for usage documentation"
 		exit 1
 		;;
     esac

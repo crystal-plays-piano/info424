@@ -1,0 +1,4 @@
+@image{47/lily-643dac47-1}
+@image{47/lily-643dac47-2}
+@image{47/lily-643dac47-3}
+@c eof
