@@ -63,4 +63,4 @@ EOF
     pdflatex assignment8.tex
     popd
 
-    cp latex/lilyrender/assignment8.pdf assignment8.pdf
+    cp latex/lilyrender/assignment8.pdf assignment-print.pdf
