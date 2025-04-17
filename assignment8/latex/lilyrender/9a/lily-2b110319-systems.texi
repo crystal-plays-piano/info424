@@ -1,0 +1,5 @@
+@image{9a/lily-2b110319-1}
+@image{9a/lily-2b110319-2}
+@image{9a/lily-2b110319-3}
+@image{9a/lily-2b110319-4}
+@c eof
