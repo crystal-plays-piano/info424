@@ -1,0 +1,14 @@
+#N canvas 424 -30 1920 966 12;
+#X floatatom 139 67 14 0 0 0 - - - 0;
+#X msg 139 90 set \$1;
+#X msg 139 114 1.1, f 16;
+#X obj 65 66 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
+#X obj 139 138 split-sieve-input;
+#X floatatom 119 184 5 0 0 0 - - - 0;
+#X floatatom 252 182 11 0 0 0 - - - 0;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
