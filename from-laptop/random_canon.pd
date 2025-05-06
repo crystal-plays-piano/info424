@@ -1,4 +1,4 @@
-#N canvas 4 32 1920 966 12;
+#N canvas 4 32 1704 952 12;
 #X obj 407 85 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
 #X obj 207 131 random 12;
 #X obj 207 155 expr pow ( 2 \, ( ( $f1 - 6 ) / 12.) );
@@ -23,6 +23,8 @@
 #X floatatom 521 61 5 0 0 0 - - - 0;
 #X msg 521 84 set \$1;
 #X obj 628 69 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
+#X obj 748 84 tgl 20 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000 0 1;
+#X msg 748 109 \; pd dsp \$1;
 #X connect 0 0 9 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -48,3 +50,4 @@
 #X connect 21 0 22 0;
 #X connect 22 0 10 0;
 #X connect 23 0 10 0;
+#X connect 24 0 25 0;
