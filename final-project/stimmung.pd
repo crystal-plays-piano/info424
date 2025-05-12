@@ -629,7 +629,7 @@
 #X restore 67 676 pd del-matrix;
 #X floatatom 1500 108 5 0 0 0 - - - 0;
 #X msg 1500 132 set \$1;
-#X msg 1500 157 5;
+#X msg 1500 157 20;
 #X text 977 629 clipping failsafe;
 #X text 45 505 subpatch containing sends for parameter automation;
 #X text 40 617 subpatch containing sends for note automation triggers;
@@ -650,7 +650,7 @@
 #X obj 1310 134 t anything b;
 #X msg 1500 38 120;
 #X obj 1069 171 r v5;
-#X obj 920 629 * 0.08;
+#X obj 920 629 0.2;
 #X connect 0 0 1 0;
 #X connect 0 0 3 0;
 #X connect 0 0 4 0;
