@@ -1,0 +1,41 @@
+\documentclass[12pt,letterpaper]{article}
+
+% - default packages
+
+% - \usepackage[backend=biber,style=apa]{biblatex}
+\usepackage[doublespacing]{setspace}
+\usepackage{indentfirst}
+\usepackage{parskip}
+
+% - \addbibresource{../bibliography.bib}
+
+\title{\vspace*{-72pt}Final Writeup}
+\author{Crystal Mandal}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+This project is a reimagining of Stockhausen's \textit{Stimmung} 
+for six cosine oscillators. Each voice is tuned justly to one of 
+six notes sung in Stockhausen's \textit{Stimmung}. When the playback 
+is initialised, each voice is started on an independent, random, 
+``trigger". When a voice is triggered, it is given a new volume and 
+a new ``vibrato" frequency (note: this is not true pitch vibrato, but 
+is a parameter that slightly modulates volume above and below a given 
+center to mimic the natural unsteadyness of a voice). Then, the voice's 
+parameters slowly ramp from old parameters to the new ones. This ramp 
+duration is set at 2 seconds. The duration between triggers is randomised 
+from zero to five seconds. This gives the illusion of some stasis every 
+couple of seconds, but constantly shifting voices. Note that the frequency 
+of the pitches never changes; the only musical content comes from the 
+shift in tone due to the manipulation of the volumes of particular 
+overtones. Finally, a linear ramp envelope is added to automate a 
+gradual fade to silence and to give the piece a duration. 
+
+% - \nocite{*}
+
+% - \printbibliography
+
+\end{document}
